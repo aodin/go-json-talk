@@ -1,0 +1,67 @@
+Advanced JSON Strategies
+25 Jun 2015
+Tags: go, golang, json, marshal, unmarshal
+
+Aaron O. Ellis
+Lead Developer, Galvanize
+aaron.o.ellis@gmail.com
+http://aaronoellis.com/
+@aaronoellis
+
+* Plain Old Structs
+
+JSON unmarshal is case insensitive by default
+
+.play ./samples/tagless/tagless.go /START OMIT/,/END OMIT/
+
+* Tag Options
+
+JSON struct tags can take options
+
+.play ./samples/options/options.go /START OMIT/,/END OMIT/
+
+* Anonymous Structs
+
+Wrap meaningful structs in anonymous structs to easily discard filler
+
+.play ./samples/anonymous/anonymous.go /START OMIT/,/END OMIT/
+
+* Unmarshaling into `interface{}`
+
+There is no integer in JSON, everything is a float64...
+
+* Raw Message
+
+.link http://golang.org/pkg/encoding/json/#RawMessage
+
+* Embedding
+
+When there are multiple responses without overlapping fields
+
+* Masking with Embedding
+
+Remove a field from JSON output using a "mask"
+
+.play ./samples/mask/mask.go /START OMIT/,/END OMIT/
+
+* The Interfaces
+
+    type Marshaler interface {
+        MarshalJSON() ([]byte, error)
+    }
+
+.link http://golang.org/pkg/encoding/json/#Marshaler
+
+    type Unmarshaler interface {
+        UnmarshalJSON([]byte) error
+    }
+
+.link http://golang.org/pkg/encoding/json/#Unmarshaler
+
+* Asymmetrical Structs
+
+Creating read or write only structs allows re-use
+
+* This talk is on GitHub
+
+.link https://github.com/aodin/go-json-talk
