@@ -7,7 +7,10 @@ import (
 
 // START OMIT
 type tagless struct {
-	unexported, ALL_CAPS, Upper, Lower int64
+	unexported int64
+	ALL_CAPS   int64
+	Upper      int64
+	Lower      int64
 }
 
 var data = []byte(`{

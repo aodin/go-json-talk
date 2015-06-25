@@ -26,7 +26,7 @@ Wrap meaningful structs in anonymous structs to easily discard filler
 
 .play ./samples/anonymous/anonymous.go /START OMIT/,/END OMIT/
 
-* Unmarshaling into `interface{}`
+* Unmarshaling into interface{}
 
 There is no integer in JSON, everything is a float64...
 
@@ -34,7 +34,7 @@ There is no integer in JSON, everything is a float64...
 
 .link http://golang.org/pkg/encoding/json/#RawMessage
 
-* Embedding
+* Sharing with Embedding
 
 When there are multiple responses without overlapping fields
 
@@ -44,7 +44,9 @@ Remove a field from JSON output using a "mask"
 
 .play ./samples/mask/mask.go /START OMIT/,/END OMIT/
 
-* The Interfaces
+* Warning: Duplicate Fields are Dropped
+
+* The JSON Interfaces
 
     type Marshaler interface {
         MarshalJSON() ([]byte, error)
@@ -58,9 +60,23 @@ Remove a field from JSON output using a "mask"
 
 .link http://golang.org/pkg/encoding/json/#Unmarshaler
 
-* Asymmetrical Structs
+* Custom Types
 
-Creating read or write only structs allows re-use
+Manipulating read and write increases type re-usability
+
+.play ./samples/once/once.go /START OMIT/,/END OMIT/
+
+
+* Default Behavior
+
+Add default behavior and error checking to the implementing methods
+
+.play ./samples/default/default.go /START OMIT/,/END OMIT/
+
+* Warning: Impmenting JSON Interfaces will be Promoted with Embeding
+
+Types that implement the interfaces will have their methods promoted to the
+parent struct.
 
 * This talk is on GitHub
 
