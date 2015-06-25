@@ -8,6 +8,16 @@ aaron.o.ellis@gmail.com
 http://aaronoellis.com/
 @aaronoellis
 
+* The Goal
+
+Minimize the number and size of custom types while maximizing their utility.
+
+* Why Not interface{}?
+
+The empty interface, and map[string]interface{}, allow you to build reusable and generic components.
+
+But there are better languages if you're going to rely on dynamic code.
+
 * Plain Old Structs
 
 JSON unmarshal is case insensitive by default
@@ -16,7 +26,7 @@ JSON unmarshal is case insensitive by default
 
 * Tag Options
 
-JSON struct tags can take options
+JSON struct tags have options
 
 .play ./samples/options/options.go /START OMIT/,/END OMIT/
 
@@ -24,19 +34,7 @@ JSON struct tags can take options
 
 Wrap meaningful structs in anonymous structs to easily discard filler
 
-.play ./samples/anonymous/anonymous.go /START OMIT/,/END OMIT/
-
-* Unmarshaling into interface{}
-
-There is no integer in JSON, everything is a float64...
-
-* Raw Message
-
-.link http://golang.org/pkg/encoding/json/#RawMessage
-
-* Sharing with Embedding
-
-When there are multiple responses without overlapping fields
+.play ./samples/anonymous/anonymous.go /START OMIT/,/END OMIT
 
 * Masking with Embedding
 
@@ -44,9 +42,33 @@ Remove a field from JSON output using a "mask"
 
 .play ./samples/mask/mask.go /START OMIT/,/END OMIT/
 
+* Splitting with Embedding
+
+When there are multiple responses without overlapping fields
+
+.play ./samples/split/split.go /START OMIT/,/END OMIT/
+
 * Warning: Duplicate Fields are Dropped
 
+If two embedded structs share a field (i.e. the JSON field name), the value will not be marshaled into either of them
+
+.play ./samples/dropped/dropped.go /START OMIT/,/END OMIT/
+
+* Raw Message
+
+Used to delay marshaling or unmarshaling
+
+.link http://golang.org/pkg/encoding/json/#RawMessage
+
+* Multiple Types in One Array
+
+Use RawMessage to decode an array with multiple types
+
+.play ./samples/multiple/multiple.go /START OMIT/,/END OMIT/
+
 * The JSON Interfaces
+
+Any type can implement an interface, not just structs!
 
     type Marshaler interface {
         MarshalJSON() ([]byte, error)
@@ -66,17 +88,17 @@ Manipulating read and write increases type re-usability
 
 .play ./samples/once/once.go /START OMIT/,/END OMIT/
 
-
 * Default Behavior
 
 Add default behavior and error checking to the implementing methods
 
 .play ./samples/default/default.go /START OMIT/,/END OMIT/
 
-* Warning: Impmenting JSON Interfaces will be Promoted with Embeding
+* Warning: Embedding Will Promote the Implementation
 
-Types that implement the interfaces will have their methods promoted to the
-parent struct.
+Structs with embeded implementations will have their default behavior overwritten
+
+.play ./samples/promoted/promoted.go /START OMIT/,/END OMIT/
 
 * This talk is on GitHub
 
