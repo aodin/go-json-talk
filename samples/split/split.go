@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-// START OMIT
+// BEGIN OMIT
 type Author struct{ Name string }
 
 type Book struct{ Title string }
@@ -24,5 +24,3 @@ func main() {
 	fmt.Printf("%+v\n", responses[0].Author)
 	fmt.Printf("%+v\n", responses[1].Book)
 }
-
-// END OMIT

@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-// START OMIT
+// BEGIN OMIT
 type Key int64
 
 // Allow the key to only be set once
@@ -28,5 +28,3 @@ func main() {
 	fmt.Println(json.Unmarshal([]byte(`24`), &key))
 	fmt.Println(key)
 }
-
-// END OMIT

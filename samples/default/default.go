@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// START OMIT
+// BEGIN OMIT
 type Name string
 
 func (name *Name) UnmarshalJSON(data []byte) error {
@@ -27,5 +27,3 @@ func main() {
 	_ = json.Unmarshal([]byte(`{"name": " Bill Murray "}`), &person) // ignored error
 	fmt.Printf("%+v", person)
 }
-
-// END OMIT

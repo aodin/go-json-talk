@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-// START OMIT
+// BEGIN OMIT
 type Thing struct {
 	Value int64
 }
@@ -23,5 +23,3 @@ func main() {
 	_ = json.Unmarshal(data, &response) // ignored error
 	fmt.Printf("%+v", response.Data)
 }
-
-// END OMIT

@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-// START OMIT
+// BEGIN OMIT
 type Detail struct {
 	Name  string `json:"name"`
 	Value int64  `json:"value"`
@@ -24,5 +24,3 @@ func main() {
 	b, _ = json.MarshalIndent(List{Detail: detail}, "", "  ") // ignored error
 	fmt.Printf("%s", b)
 }
-
-// END OMIT

@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-// START OMIT
+// BEGIN OMIT
 type options struct {
 	Alias           int64 `json:"alias"`
 	Ignored         int64 `json:"-"`
@@ -25,5 +25,3 @@ func main() {
 	b, _ := json.MarshalIndent(data, "", "  ") // ignored error
 	fmt.Printf("%s", b)
 }
-
-// END OMIT

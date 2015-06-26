@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-// START OMIT
+// BEGIN OMIT
 type tagless struct {
 	unexported int64
 	ALL_CAPS   int64
@@ -25,5 +25,3 @@ func main() {
 	_ = json.Unmarshal(data, &response) // ignored error
 	fmt.Printf("%+v", response)
 }
-
-// END OMIT

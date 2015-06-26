@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-// START OMIT
+// BEGIN OMIT
 type PrimaryKey struct{ ID int }
 
 func (pk PrimaryKey) MarshalJSON() ([]byte, error) {
@@ -24,5 +24,3 @@ func main() {
 	b, _ = json.Marshal(Person{PrimaryKey{ID: 1}, "HAL"}) // ignored error
 	fmt.Printf("%s\n", b)
 }
-
-// END OMIT

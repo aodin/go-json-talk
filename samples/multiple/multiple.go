@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-// START OMIT
+// BEGIN OMIT
 type Author struct{ ID, Name string }
 
 type Book struct{ ID, Title string }
@@ -25,5 +25,3 @@ func main() {
 	_ = json.Unmarshal(response[1], &book) // ignored error
 	fmt.Printf("%+v\n", book)
 }
-
-// END OMIT
